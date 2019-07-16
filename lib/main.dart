@@ -8,7 +8,5 @@ void main() => runApp(MaterialApp(
         '/': (context) => SplashScreen(),
         "HomeScreen": (context) => HomePage(),
       },
-      theme: ThemeData(
-        primaryColor: Color(0xFF606BA1),
-      ),
+      theme: ThemeData(),
     ));

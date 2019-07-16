@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // My Imports
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -35,6 +36,36 @@ class _BmiMenuState extends State<BmiMenu> {
             fontFamily: 'OpenSans-SemiBold',
           ),
         ),
+      ),
+      body: SafeArea(
+        child: Container(
+          child: Column(
+            children: <Widget>[],
+          ),
+        ),
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: kMainColor,
+        items: <Widget>[
+          Icon(
+            Icons.settings,
+            size: 30,
+            color: kMainColor,
+          ),
+          Icon(
+            Icons.home,
+            size: 30,
+            color: kMainColor,
+          ),
+          Icon(
+            Icons.person,
+            size: 30,
+            color: kMainColor,
+          ),
+        ],
+        onTap: (index) {
+          //Handle button tap
+        },
       ),
     );
   }
