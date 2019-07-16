@@ -1,16 +1,13 @@
 # bmi_project
 
-A new Flutter application.
+Ceci est une application réaliser avec Flutter permettant de déterminer l'indice de mase
+corporel d'un individu
 
-## Getting Started
+## Liste des ressources
 
-This project is a starting point for a Flutter application.
+Voici une liste de ressources qui m'ont permie de développer cette application
 
-A few resources to get you started if this is your first Flutter project:
+- pour la création du splashScreen [voici un petit tuto](https://fluttermaster.com/create-splash-screen-in-flutter/)
+- Pour la création du menu avec la curve [curved_navigation_bar 0.3.0](https://pub.dev/packages/curved_navigation_bar#-readme-tab-)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## ScreenShots
