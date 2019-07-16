@@ -1,9 +1,9 @@
 import 'package:bmi_project/screens/profil_screen.dart';
 import 'package:bmi_project/screens/settings_screen.dart';
 import 'package:bmi_project/utilities/constantes.dart';
+import 'package:bmi_project/widgets/iconButtonNavigation.dart';
 import 'package:flutter/material.dart';
 
-// My Imports
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 import 'calcul_bmi_screen.dart';
@@ -59,21 +59,9 @@ class _BmiMenuState extends State<BmiMenu> {
         height: 70.0,
         backgroundColor: kMainColor,
         items: <Widget>[
-          Icon(
-            Icons.settings,
-            size: 30,
-            color: kMainColor,
-          ),
-          Icon(
-            Icons.home,
-            size: 30,
-            color: kMainColor,
-          ),
-          Icon(
-            Icons.person,
-            size: 30,
-            color: kMainColor,
-          ),
+          IconButtonNavigation(Icons.settings),
+          IconButtonNavigation(Icons.home),
+          IconButtonNavigation(Icons.person),
         ],
         onTap: (int index) {
           setState(() {
