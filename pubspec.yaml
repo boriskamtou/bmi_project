@@ -11,6 +11,9 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^0.1.2
+  page_transition: ^1.1.4
+  fancy_bottom_navigation: ^0.3.2
+
 
 dev_dependencies:
   flutter_test:
@@ -28,5 +31,7 @@ flutter:
   - family: OpenSans-Regular
     fonts:
     - asset: fonts/OpenSans-Regular.ttf
+    - asset: fonts/OpenSans-SemiBold.ttf
+
 
 

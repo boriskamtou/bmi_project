@@ -1,4 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+
+import 'home_screen.dart';
+
+// My Import packages
+import 'package:page_transition/page_transition.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -6,6 +13,27 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  Future<Timer> goToHomeScreen() async {
+    return Timer(Duration(seconds: 3), goToHome);
+  }
+
+  goToHome() async {
+    Navigator.push(
+      context,
+      PageTransition(
+        duration: Duration(milliseconds: 680),
+        type: PageTransitionType.rightToLeft,
+        child: HomePage(),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    goToHomeScreen();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
