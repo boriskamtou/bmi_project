@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   goToHome() async {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       PageTransition(
         duration: Duration(milliseconds: 800),

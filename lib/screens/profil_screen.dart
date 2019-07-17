@@ -1,8 +1,6 @@
 import 'package:bmi_project/utilities/constantes.dart';
 import 'package:flutter/material.dart';
 
-import 'calcul_bmi_screen.dart';
-
 class ProfilPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -24,10 +22,11 @@ class _ProfilMenuState extends State<ProfilMenu> {
       appBar: AppBar(
         backgroundColor: kMainColor,
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              // TODO
-            }),
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // TODO
+          },
+        ),
         title: Text(
           "Modifier votre profil",
           style: TextStyle(
