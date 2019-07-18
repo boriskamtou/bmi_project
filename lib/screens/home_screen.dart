@@ -1,3 +1,4 @@
+import 'package:bmi_project/screens/history_screen.dart';
 import 'package:bmi_project/screens/profil_screen.dart';
 import 'package:bmi_project/screens/settings_screen.dart';
 import 'package:bmi_project/utilities/constantes.dart';
@@ -24,11 +25,11 @@ class BmiMenu extends StatefulWidget {
 
 class _BmiMenuState extends State<BmiMenu> {
   int pageIndex = 1;
-  GlobalKey _bottomNavigationKey = GlobalKey();
   // Creating pages
   final ProfilPage profilScreen = ProfilPage();
   final SettingPage settingScreen = SettingPage();
   final CalculBmiPage calculBmiScreen = CalculBmiPage();
+  final HistoryPage historyScreen = HistoryPage();
 //  Handle page transition
   Widget _showPage = CalculBmiPage();
   Widget _pageChooser(int page) {
@@ -41,6 +42,9 @@ class _BmiMenuState extends State<BmiMenu> {
         break;
       case 2:
         return profilScreen;
+        break;
+      case 3:
+        return historyScreen;
         break;
       default:
         return calculBmiScreen;
@@ -55,7 +59,7 @@ class _BmiMenuState extends State<BmiMenu> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         index: pageIndex,
-        key: _bottomNavigationKey,
+        key: kBottomNavigationKey,
         height: 70.0,
         backgroundColor: kMainColor,
         items: <Widget>[
@@ -63,7 +67,7 @@ class _BmiMenuState extends State<BmiMenu> {
           IconButtonNavigation(Icons.home),
           IconButtonNavigation(Icons.person),
         ],
-        onTap: (int index) {
+        onTap: (index) {
           setState(() {
             _showPage = _pageChooser(index);
           });

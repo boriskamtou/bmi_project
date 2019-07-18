@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bmi_project/utilities/constantes.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class CalculBmiPage extends StatelessWidget {
   @override
@@ -17,6 +18,7 @@ class BmiDesign extends StatefulWidget {
 
 class _BmiDesignState extends State<BmiDesign> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  GlobalKey _keyNav = kBottomNavigationKey;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +41,6 @@ class _BmiDesignState extends State<BmiDesign> {
         ),
       ),
       drawer: Drawer(
-        elevation: 30.0,
         child: Container(
           color: kMainColor,
           child: ListView(
@@ -106,6 +107,8 @@ class _BmiDesignState extends State<BmiDesign> {
                 ),
                 onTap: () {
                   Navigator.pop(context);
+                  final CurvedNavigationBarState navBar = _keyNav.currentState;
+                  navBar.setPage(2);
                 },
               ),
               ListTile(
@@ -121,6 +124,8 @@ class _BmiDesignState extends State<BmiDesign> {
                 ),
                 onTap: () {
                   Navigator.pop(context);
+                  final CurvedNavigationBarState navBar = _keyNav.currentState;
+                  navBar.setPage(3);
                 },
               ),
               ListTile(
@@ -136,22 +141,17 @@ class _BmiDesignState extends State<BmiDesign> {
                 ),
                 onTap: () {
                   Navigator.pop(context);
+                  final CurvedNavigationBarState navBar = _keyNav.currentState;
+                  navBar.setPage(0);
                 },
               ),
             ],
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            children: <Widget>[
-              Column(
-                children: <Widget>[],
-              )
-            ],
-          ),
+      body: Container(
+        child: Center(
+          child: Text('Calcul IMC'),
         ),
       ),
     );

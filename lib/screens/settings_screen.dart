@@ -1,5 +1,6 @@
 import 'package:bmi_project/utilities/constantes.dart';
 import 'package:flutter/material.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class SettingPage extends StatelessWidget {
   @override
@@ -16,6 +17,7 @@ class SettingMenu extends StatefulWidget {
 }
 
 class _SettingMenuState extends State<SettingMenu> {
+  GlobalKey keyNav = kBottomNavigationKey;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +27,8 @@ class _SettingMenuState extends State<SettingMenu> {
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               // TODO
-              print('Bonjour le monde');
+              final CurvedNavigationBarState navBar = keyNav.currentState;
+              navBar.setPage(1);
             }),
         title: Text(
           "Paramètres",

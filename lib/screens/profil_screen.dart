@@ -1,5 +1,6 @@
 import 'package:bmi_project/utilities/constantes.dart';
 import 'package:flutter/material.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class ProfilPage extends StatelessWidget {
   @override
@@ -16,6 +17,7 @@ class ProfilMenu extends StatefulWidget {
 }
 
 class _ProfilMenuState extends State<ProfilMenu> {
+  GlobalKey _keyNav = kBottomNavigationKey;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +26,8 @@ class _ProfilMenuState extends State<ProfilMenu> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            // TODO
+            final CurvedNavigationBarState navBar = _keyNav.currentState;
+            navBar.setPage(1);
           },
         ),
         title: Text(
