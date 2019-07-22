@@ -1,3 +1,5 @@
+import 'package:bmi_project/screens/history_screen.dart';
+import 'package:bmi_project/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_project/utilities/constantes.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -11,12 +13,16 @@ class CalculBmiPage extends StatelessWidget {
   }
 }
 
+double sliderDefaultValue = 21.0;
+
 class BmiDesign extends StatefulWidget {
   @override
   _BmiDesignState createState() => _BmiDesignState();
 }
 
 class _BmiDesignState extends State<BmiDesign> {
+  Widget historyScreen = HistoryPage();
+  Widget bmiMenu = BmiDesign();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   GlobalKey _keyNav = kBottomNavigationKey;
   @override
@@ -28,8 +34,6 @@ class _BmiDesignState extends State<BmiDesign> {
         leading: IconButton(
           icon: Icon(Icons.menu),
           onPressed: () {
-            // TODO
-            print('Bonjour le monde');
             _scaffoldKey.currentState.openDrawer();
           },
         ),
@@ -45,6 +49,7 @@ class _BmiDesignState extends State<BmiDesign> {
           color: kMainColor,
           child: ListView(
             padding: EdgeInsets.zero,
+            physics: BouncingScrollPhysics(),
             children: <Widget>[
               Container(
                 padding: EdgeInsets.fromLTRB(16.0, 35.0, 16.0, 8.0),
@@ -101,9 +106,7 @@ class _BmiDesignState extends State<BmiDesign> {
                 ),
                 title: Text(
                   'Mon Profil',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+                  style: kStyleTextDrawer,
                 ),
                 onTap: () {
                   Navigator.pop(context);
@@ -118,14 +121,16 @@ class _BmiDesignState extends State<BmiDesign> {
                 ),
                 title: Text(
                   'Historique IMC',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+                  style: kStyleTextDrawer,
                 ),
                 onTap: () {
                   Navigator.pop(context);
-                  final CurvedNavigationBarState navBar = _keyNav.currentState;
-                  navBar.setPage(3);
+
+                  bmiMenu = historyScreen;
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => bmiMenu),
+                  );
                 },
               ),
               ListTile(
@@ -135,9 +140,7 @@ class _BmiDesignState extends State<BmiDesign> {
                 ),
                 title: Text(
                   'Paramètres',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+                  style: kStyleTextDrawer,
                 ),
                 onTap: () {
                   Navigator.pop(context);
@@ -149,10 +152,194 @@ class _BmiDesignState extends State<BmiDesign> {
           ),
         ),
       ),
-      body: Container(
-        child: Center(
-          child: Text('Calcul IMC'),
-        ),
+      body: SingleChildScrollView(
+        child: Container(
+            padding: EdgeInsets.all(30.0),
+            child: Column(
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    Container(
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Material(
+                              elevation: 2.0,
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: Container(
+                                height: 120.0,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Color(0xFFDEDEDE),
+                                    width: 1.0,
+                                    style: BorderStyle.solid,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    Text(
+                                      'GENRE',
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        color: kTextColor,
+                                        fontFamily: 'OpenSans-SemiBold',
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: <Widget>[
+                                        Column(
+                                          children: <Widget>[
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: Color(0xFFDEDEDE),
+                                                  width: 1.0,
+                                                ),
+                                                shape: BoxShape.circle,
+                                                color: Colors.transparent,
+                                              ),
+                                              height: 50.0,
+                                              width: 50.0,
+                                              child: Center(
+                                                child: Image(
+                                                  image: AssetImage(
+                                                      'images/male.png'),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 5.0,
+                                            ),
+                                            Text('Male'),
+                                          ],
+                                        ),
+                                        Column(
+                                          children: <Widget>[
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: Color(0xFFDEDEDE),
+                                                  width: 1.0,
+                                                ),
+                                                shape: BoxShape.circle,
+                                                color: Colors.transparent,
+                                              ),
+                                              child: Center(
+                                                child: Image(
+                                                  image: AssetImage(
+                                                      'images/female.png'),
+                                                ),
+                                              ),
+                                              height: 50.0,
+                                              width: 60.0,
+                                            ),
+                                            SizedBox(
+                                              height: 5.0,
+                                            ),
+                                            Text('Femelle'),
+                                          ],
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Expanded(
+                            child: Material(
+                              elevation: 2.0,
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: Container(
+                                height: 120.0,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Color(0xFFDEDEDE),
+                                      width: 1.0,
+                                      style: BorderStyle.solid),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    Text(
+                                      'AGE',
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        color: kTextColor,
+                                        fontFamily: 'OpenSans-SemiBold',
+                                      ),
+                                    ),
+                                    Column(
+                                      children: <Widget>[
+                                        SliderTheme(
+                                          data:
+                                              SliderTheme.of(context).copyWith(
+                                            trackHeight: 4.0,
+                                            thumbColor: kMainColor,
+                                            activeTrackColor:
+                                                kSlideInactiveColor,
+                                            inactiveTrackColor:
+                                                kSlideActiveColor,
+                                            thumbShape: RoundSliderThumbShape(
+                                                enabledThumbRadius: 10.0),
+                                            overlayShape:
+                                                RoundSliderOverlayShape(
+                                                    overlayRadius: 15.0),
+                                            overlayColor: Color(0x29606BA1),
+                                          ),
+                                          child: Slider(
+                                            min: 0.0,
+                                            max: 120.0,
+                                            onChanged: (newValue) {
+                                              setState(() {
+                                                sliderDefaultValue = newValue;
+                                              });
+                                            },
+                                            value: sliderDefaultValue,
+                                          ),
+                                        ),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: Color(0xFFDEDEDE),
+                                              width: 1.0,
+                                            ),
+                                            shape: BoxShape.circle,
+                                            color: Color(0x20606BA1),
+                                          ),
+                                          height: 50.0,
+                                          width: 50.0,
+                                          child: Center(
+                                            child: Text(
+                                              '${sliderDefaultValue.toInt()}',
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+                Column(),
+              ],
+            )),
       ),
     );
   }

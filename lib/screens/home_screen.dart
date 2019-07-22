@@ -30,8 +30,9 @@ class _BmiMenuState extends State<BmiMenu> {
   final SettingPage settingScreen = SettingPage();
   final CalculBmiPage calculBmiScreen = CalculBmiPage();
   final HistoryPage historyScreen = HistoryPage();
+
+  Widget _showPage = kShowPage;
 //  Handle page transition
-  Widget _showPage = CalculBmiPage();
   Widget _pageChooser(int page) {
     switch (page) {
       case 0:
@@ -67,7 +68,7 @@ class _BmiMenuState extends State<BmiMenu> {
           IconButtonNavigation(Icons.home),
           IconButtonNavigation(Icons.person),
         ],
-        onTap: (index) {
+        onTap: (int index) {
           setState(() {
             _showPage = _pageChooser(index);
           });
